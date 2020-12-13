@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import GenerationDetails from '../components/GenerationDetails';
 import PokemonListing from '../components/PokemonListing';
 import useSWR from 'swr';
-import { fetcher } from '../services/apiService';
+import { generationFetcher } from '../services/apiService';
 import CONSTANTS from '../config/constants';
 import Loading from '../components/Loading';
 
@@ -17,7 +17,7 @@ const GenerationLayout = ({
 }>) => {
   const { data: generation, error } = useSWR(
     generationID ? `${CONSTANTS.apiUrl}/generation/${generationID}` : null,
-    fetcher
+    generationFetcher
   );
 
   if (error) {

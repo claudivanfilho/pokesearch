@@ -2,12 +2,12 @@ import useSWR from 'swr';
 
 import GenerationListing from '../components/GenerationListing';
 import CONSTANTS from '../config/constants';
-import { fetcher } from '../services/apiService';
+import { generationsFetcher } from '../services/apiService';
 
 const GenerationsLayout = () => {
   const { data: { results: generations } = { results: [] }, error } = useSWR(
     `${CONSTANTS.apiUrl}/generation`,
-    fetcher
+    generationsFetcher
   );
 
   if (error) {

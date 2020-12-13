@@ -6,7 +6,11 @@ import {
   EvolutionChainResponse
 } from '../models/index';
 
-export const fetcher = (...args: any) =>
+export const generationsFetcher = (...args: any) =>
+  // @ts-ignore
+  fetch(...args).then((res) => res.json());
+
+export const generationFetcher = (...args: any) =>
   // @ts-ignore
   fetch(...args).then((res) => res.json());
 
