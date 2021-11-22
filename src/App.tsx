@@ -1,18 +1,19 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import BaseLayout from './layouts/BaseLayout';
+import GenerationLayout from './layouts/GenerationLayout';
+import PokemonDetailsLayout from './layouts/PokemonDetailsLayout';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={BaseLayout} />
-      <Route exact path="/generation/:id" component={BaseLayout} />
-      <Route
-        exact
-        path="/generation/:id/pokemon/:name"
-        component={BaseLayout}
-      />
-    </Switch>
+    <Routes>
+      <Route path="/" element={<BaseLayout />}>
+        <Route path="generation/:generationId" element={<GenerationLayout />}>
+          <Route path="pokemon/:pokemonName" element={<PokemonDetailsLayout />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+

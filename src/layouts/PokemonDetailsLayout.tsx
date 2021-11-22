@@ -1,47 +1,12 @@
-import { RouteComponentProps } from 'react-router-dom';
-import useSWR from 'swr';
+import { useParams } from 'react-router-dom';
+import PokemonDetailsSection from '../components/PokemonDetailsSection';
 
-import PokemonDetailsSidebar from '../components/PokemonDetailsSidebar';
-import { getPokemon } from '../services/apiService';
-
-const PokemonDetailsLayout = ({
-  match: {
-    params: { name }
-  }
-}: RouteComponentProps<{
-  id?: string;
-  name?: string;
-}>) => {
-  const { data: pokemon, error } = useSWR(
-    name ? `/pokemon/${name}` : null,
-    () => getPokemon({ name })
-  );
-
-  if (error) {
-    return (
-      <div className="w-full h-full flex text-xl">
-        Erro ao carregaar pokemon
-      </div>
-    );
-  }
-  if (!name) {
-    return (
-      <div className="w-full h-full flex text-xl">
-        Nenhum pokemon selecionado
-      </div>
-    );
-  }
+export default function PokemonDetailsLayout() {
+  const { pokemonName } = useParams();
 
   return (
-    <PokemonDetailsSidebar
-      pokemon={
-        pokemon || {
-          name
-        }
-      }
-      loading={!pokemon}
-    />
+    <div className={`col-span-3 lg:pl-5 ${pokemonName ? 'block' : 'hidden lg:block'}`}>
+      <PokemonDetailsSection />
+    </div>
   );
-};
-
-export default PokemonDetailsLayout;
+}

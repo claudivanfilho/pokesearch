@@ -118,14 +118,11 @@ export type Pokemon = {
   base_happiness: number;
   capture_rate: number;
   genera: Array<{ genus: string; language: Resource[] }>;
-  evolution: {
-    stage1: PokemonResponse;
-    stage2?: PokemonResponse;
-    stage3?: PokemonResponse;
-  };
+  evolutions: PokemonResponse[];
 };
 
 export type Resource = {
   name: string;
   url: string;
 };
+

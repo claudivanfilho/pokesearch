@@ -1,8 +1,8 @@
 import { ChevronLeft } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full bg-purple-700 py-3 text-white fixed top-0 z-10">
@@ -10,7 +10,7 @@ const Header = () => {
         <h1 className="text-2xl font-bold">PokeSearch</h1>
         <div
           className="flex lg:hidden items-center text-xl font-bold cursor-pointer"
-          onClick={() => history.goBack()}
+          onClick={() => navigate(-1)}
         >
           <ChevronLeft fontSize="large" />
           Voltar
@@ -21,3 +21,4 @@ const Header = () => {
 };
 
 export default Header;
+

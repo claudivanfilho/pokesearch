@@ -1,29 +1,15 @@
-import useSWR from 'swr';
+import { useParams, Outlet } from 'react-router-dom';
+import GenerationsSection from '../components/GenerationsSection';
 
-import GenerationListing from '../components/GenerationListing';
-import CONSTANTS from '../config/constants';
-import { generationsFetcher } from '../services/apiService';
-
-const GenerationsLayout = () => {
-  const { data: { results: generations } = { results: [] }, error } = useSWR(
-    `${CONSTANTS.apiUrl}/generation`,
-    generationsFetcher
-  );
-
-  if (error) {
-    return <div>Error on loading generations</div>;
-  }
-
-  if (!generations) {
-    return <div>Loading generations</div>;
-  }
+export default function GenerationsLayout() {
+  const { generationId } = useParams();
 
   return (
     <>
-      <h3 className="text-3xl mb-3 font-bold text-gray-700">Gerações</h3>
-      <GenerationListing generations={generations} />
+      <div className={`col-span-1 ${generationId ? 'hidden lg:block' : 'block'}`}>
+        <GenerationsSection />
+      </div>
+      <Outlet />
     </>
   );
-};
-
-export default GenerationsLayout;
+}

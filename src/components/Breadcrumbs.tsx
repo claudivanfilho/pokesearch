@@ -1,50 +1,41 @@
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const Breadcrumbs = ({
-  match: {
-    params: { id, name }
-  }
-}: RouteComponentProps<{
-  id?: string;
-  name?: string;
-}>) => {
+const Breadcrumbs = () => {
+  const { generationId, pokemonName } = useParams();
   return (
     <nav className="container block lg:hidden">
       <ol className="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
         <li className="px-2">
-          {!id ? (
+          {!generationId ? (
             <span className="text-gray-700">Gerações </span>
           ) : (
-            <Link
-              to={`/`}
-              className="flex w-full lg:w-40 text-purple-700 hover:underline"
-            >
+            <Link to={`/`} className="flex w-full lg:w-40 text-purple-700 hover:underline">
               Gerações
             </Link>
           )}
         </li>
-        {id && (
+        {generationId && (
           <>
             <li>/</li>
             <li className="px-2">
-              {!name ? (
-                <span className="text-gray-700">Geração {id} </span>
+              {!pokemonName ? (
+                <span className="text-gray-700">Geração {generationId} </span>
               ) : (
                 <Link
-                  to={`/generation/${id}`}
+                  to={`/generation/${generationId}`}
                   className="flex w-full lg:w-40 text-purple-700 hover:underline"
                 >
-                  Geração {id}
+                  Geração {generationId}
                 </Link>
               )}
             </li>
           </>
         )}
-        {name && (
+        {pokemonName && (
           <>
             <li>/</li>
             <li className="px-2">
-              <span className="text-gray-700">{name}</span>
+              <span className="text-gray-700">{pokemonName}</span>
             </li>
           </>
         )}
@@ -54,3 +45,4 @@ const Breadcrumbs = ({
 };
 
 export default Breadcrumbs;
+
