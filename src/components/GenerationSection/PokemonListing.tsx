@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { TextField } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
-import { useParams } from "react-router-dom";
+import { useState } from 'react';
+import { TextField } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
+import { useParams } from 'react-router-dom';
 
-import { Resource } from "../../models/index";
-import PokemonMiniCard from "../PokemonDetailsSection/PokemonMiniCard";
+import { Resource } from '../../models/index';
+import PokemonMiniCard from './PokemonMiniCard';
 
 const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
   const { pokemonName } = useParams();
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const onSearch = (text: string) => {
     setSearchText(text);
   };
@@ -32,7 +32,7 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
         </div>
       </div>
       <div
-        style={{ height: "calc(100vh - 350px)" }}
+        style={{ height: 'calc(100vh - 350px)' }}
         className="flex flex-col lg:grid lg:grid-cols-3 auto-rows-min gap-3 overflow-y-auto"
       >
         {getFilteredPokemons().map((pokemon) => (
