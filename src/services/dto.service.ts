@@ -1,9 +1,9 @@
-import { Pokemon, PokemonResponse, PokemonSpecieResponse } from '../models';
+import { Pokemon, PokemonResponse, PokemonSpecieResponse } from "../models";
 
 export function normalizePokemonData(
   pokemon: PokemonResponse,
   pokemonSpecie: PokemonSpecieResponse
-): Partial<Pokemon> {
+): Pokemon {
   return {
     name: pokemon.name,
     sprites: pokemon.sprites,
@@ -15,5 +15,6 @@ export function normalizePokemonData(
     base_happiness: pokemonSpecie.base_happiness,
     capture_rate: pokemonSpecie.capture_rate,
     genera: pokemonSpecie.genera,
+    evolutions: [],
   };
 }

@@ -1,20 +1,39 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import Header from '../components/Header';
-import Breadcrumbs from '../components/Breadcrumbs';
-import Footer from '../components/Footer';
-import GenerationsLayout from './GenerationsLayout';
+import Header from "../components/Header";
+import Breadcrumbs from "../components/Breadcrumbs";
+import Footer from "../components/Footer";
+import GenerationSection from "../components/GenerationSection";
+import GenerationsSection from "../components/GenerationsSection";
+import PokemonDetailsSection from "../components/PokemonDetailsSection";
 
 const BaseLayout = () => {
-  const { generationId } = useParams();
+  const { generationId, pokemonName } = useParams();
+  const isOnGenerationPage = generationId && !pokemonName;
 
   return (
     <div className="h-screen pt-14">
       <Header />
       {generationId && <Breadcrumbs />}
-      <main style={{ height: 'calc(100vh - 135px)' }}>
-        <div className="h-full max-w-screen-xl block lg:grid grid-cols-8 px-5 m-auto mt-4 lg:mt-8 lg:divide-x-2 lg:gap-x-5 lg:divide-solid 2xl:px-0">
-          <GenerationsLayout />
+      <main style={{ height: "calc(100vh - 135px)" }}>
+        <div className="h-full max-w-screen-xl block lg:grid grid-cols-8 px-5 m-auto lg:mt-8 lg:divide-x-2 lg:gap-x-5 lg:divide-solid 2xl:px-0">
+          <div className={`col-span-1 ${generationId ? "hidden lg:block" : "block"}`}>
+            <GenerationsSection />
+          </div>
+
+          {generationId && (
+            <div
+              className={`col-span-4 lg:pl-5 ${isOnGenerationPage ? "block" : "hidden lg:block"}`}
+            >
+              <GenerationSection />
+            </div>
+          )}
+
+          {pokemonName && (
+            <div className={`col-span-3 lg:pl-5 ${pokemonName ? "block" : "hidden lg:block"}`}>
+              <PokemonDetailsSection />
+            </div>
+          )}
         </div>
       </main>
       <Footer />
@@ -23,4 +42,3 @@ const BaseLayout = () => {
 };
 
 export default BaseLayout;
-

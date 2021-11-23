@@ -1,14 +1,12 @@
-import { Route, Routes } from 'react-router-dom';
-import BaseLayout from './layouts/BaseLayout';
-import GenerationLayout from './layouts/GenerationLayout';
-import PokemonDetailsLayout from './layouts/PokemonDetailsLayout';
+import { Route, Routes } from "react-router-dom";
+import BaseLayout from "./layouts/BaseLayout";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<BaseLayout />}>
-        <Route path="generation/:generationId" element={<GenerationLayout />}>
-          <Route path="pokemon/:pokemonName" element={<PokemonDetailsLayout />} />
+        <Route path="generation/:generationId">
+          <Route path="pokemon/:pokemonName" />
         </Route>
       </Route>
     </Routes>
@@ -16,4 +14,3 @@ function App() {
 }
 
 export default App;
-

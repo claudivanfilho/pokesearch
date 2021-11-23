@@ -1,30 +1,22 @@
-import { EvolutionChainResponse, Pokemon, PokemonResponse, PokemonSpecieResponse } from '../models';
-import { API_URL } from '../config/constants';
-import { normalizePokemonData } from './dto.service';
+import { EvolutionChainResponse, Pokemon, PokemonResponse, PokemonSpecieResponse } from "../models";
+import { API_URL } from "../config/constants";
+import { normalizePokemonData } from "./dto.service";
 
-export async function fetchPokemon(name: string): Promise<Partial<Pokemon>> {
-  try {
-    const pokemonResponse: PokemonResponse = await fetch(`${API_URL}/pokemon/${name}`).then((res) =>
-      res.json()
-    );
-
-    const pokemonSpecie: PokemonSpecieResponse = await fetch(pokemonResponse.species.url).then(
-      (res) => res.json()
-    );
-    const evolutionChain: EvolutionChainResponse = await fetch(
-      pokemonSpecie.evolution_chain.url
-    ).then((res) => res.json());
-    const evolutionObject = await fetchEvolutions(pokemonResponse, evolutionChain);
-    return {
-      ...normalizePokemonData(pokemonResponse, pokemonSpecie),
-      evolutions: evolutionObject,
-    };
-  } catch (error) {
-    return {
-      name,
-      color: { name: 'white', url: '' },
-    };
-  }
+export async function fetchPokemon(name: string): Promise<Pokemon | null> {
+  const pokemonResponse: PokemonResponse = await fetch(`${API_URL}/pokemon/${name}`).then((res) =>
+    res.json()
+  );
+  const pokemonSpecie: PokemonSpecieResponse = await fetch(pokemonResponse.species.url).then(
+    (res) => res.json()
+  );
+  const evolutionChain: EvolutionChainResponse = await fetch(
+    pokemonSpecie.evolution_chain.url
+  ).then((res) => res.json());
+  const evolutionObject = await fetchEvolutions(pokemonResponse, evolutionChain);
+  return {
+    ...normalizePokemonData(pokemonResponse, pokemonSpecie),
+    evolutions: evolutionObject,
+  };
 }
 
 async function fetchEvolutions(actual: PokemonResponse, evolutionChain: EvolutionChainResponse) {

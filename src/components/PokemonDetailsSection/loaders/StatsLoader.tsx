@@ -1,7 +1,11 @@
 const StatsLoader = () => {
   return (
-    <div className="animate-pulse flex w-full justify-center mt-8">
-      <svg width="40%" viewBox="0 0 175 200" className="text-purple-500">
+    <div className="animate-pulse flex w-full justify-center mt-4">
+      <svg
+        style={{ maxHeight: "calc(100vh - 600px)" }}
+        viewBox="0 0 175 200"
+        className="text-purple-500"
+      >
         <polyline
           fill="currentColor"
           id="hexagon"

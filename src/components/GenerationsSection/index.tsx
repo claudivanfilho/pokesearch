@@ -1,8 +1,8 @@
 import GenerationListing from './GenerationListing';
-import { useGenerations } from '../../hooks/useGenerations';
+import { useGenerationsSWR } from '../../hooks/useGenerationsSWR';
 
 const GenerationsSection = () => {
-  const { generations, error } = useGenerations();
+  const { generations, error } = useGenerationsSWR();
 
   if (error) {
     return <div>Error on loading generations</div>;

@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import GenerationDetails from './GenerationDetails';
 import PokemonListing from './PokemonListing';
 import Loading from '../Loading';
-import { useGeneration } from '../../hooks/useGeneration';
+import { useGenerationSWR } from '../../hooks/useGenerationSWR';
 
 const GenerationSection = () => {
   const { generationId } = useParams();
-  const { generation, error } = useGeneration();
+  const { generation, error } = useGenerationSWR();
 
   if (error) {
     return <div className="w-full h-full flex text-xl">Erro ao buscar geração</div>;
