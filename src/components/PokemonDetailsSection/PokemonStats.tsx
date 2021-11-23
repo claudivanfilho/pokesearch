@@ -4,6 +4,7 @@ import { usePokemonSWR } from '../../hooks/usePokemonSWR';
 const PokemonStats = () => {
   const { pokemon } = usePokemonSWR();
 
+  // TODO make this component receive pokemon through arg and be required
   if (!pokemon) return null;
 
   const labels = pokemon.stats?.map((stat) => stat.stat.name.replace('special', 'sp')) || [];

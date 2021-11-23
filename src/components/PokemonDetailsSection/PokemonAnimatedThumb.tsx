@@ -1,10 +1,12 @@
-import { usePokemonSWR } from "../../hooks/usePokemonSWR";
-import Loading from "../Loading";
-import PokemonBG from "./PokemonBG";
+import { usePokemonSWR } from '../../hooks/usePokemonSWR';
+import Loading from '../Loading';
+import PokemonBG from './PokemonBG';
 
 const PokemonAnimatedThumb = ({ className }: { className: string }) => {
   const { pokemon } = usePokemonSWR();
 
+  // TODO extract loading mode to a component loader
+  // TODO make this component receive pokemon through arg and be required
   return (
     <div
       className={`w-full h-full relative flex justify-center items-center border-2 border-gray-400 ${className} rounded shadow`}
@@ -21,7 +23,7 @@ const PokemonAnimatedThumb = ({ className }: { className: string }) => {
             className="object-scale-down max-h-full animate-bounce"
             src={
               pokemon?.sprites?.other.dream_world.front_default ||
-              pokemon?.sprites?.other["official-artwork"].front_default
+              pokemon?.sprites?.other['official-artwork'].front_default
             }
             width="200"
           />

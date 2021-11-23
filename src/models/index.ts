@@ -1,3 +1,4 @@
+// TODO Check type x interface
 export type GenerationsResponse = {
   results: Resource[];
 };
@@ -125,4 +126,3 @@ export type Resource = {
   name: string;
   url: string;
 };
-
