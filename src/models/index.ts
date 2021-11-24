@@ -33,7 +33,7 @@ type SpriteObject = {
       front_default: string;
       front_female: null;
     };
-    'official-artwork': {
+    "official-artwork": {
       front_default: string;
     };
   };
@@ -129,7 +129,7 @@ export type Pokemon = {
   base_happiness: number;
   capture_rate: number;
   genera: Array<{ genus: string; language: Resource[] }>;
-  evolutions: PokemonResponse[];
+  evolutions: Resource[];
 } & {
   descriptionTranslated?: string;
   nameTranslated?: string;

@@ -33,35 +33,15 @@ export async function fetchPokemon(name: string): Promise<Pokemon | null> {
   const evolutionChain: EvolutionChainResponse = await fetch(
     pokemonSpecie.evolution_chain.url
   ).then((res) => res.json());
-  const evolutionObject = await fetchEvolutions(pokemonResponse, evolutionChain);
+  const evolutionsResponse = evolutionChain.chain.evolves_to;
 
   return {
     ...pokemonResponse,
     ...pokemonSpecie,
-    evolutions: evolutionObject,
+    evolutions: [
+      evolutionChain.chain.species,
+      evolutionsResponse?.[0]?.species,
+      evolutionsResponse?.[0]?.evolves_to?.[0]?.species,
+    ].filter((e) => e),
   };
-}
-
-async function fetchEvolutions(actual: PokemonResponse, evolutionChain: EvolutionChainResponse) {
-  const evolutions: PokemonResponse[] = [];
-  const evolutionsResponse = evolutionChain.chain.evolves_to;
-  const evolutionsSpeciesInSequence = [
-    evolutionChain.chain.species,
-    evolutionsResponse?.[0]?.species,
-    evolutionsResponse?.[0]?.evolves_to?.[0]?.species,
-  ].filter((e) => e);
-
-  for (let i = 0; i < evolutionsSpeciesInSequence.length; i++) {
-    const specieName = evolutionsSpeciesInSequence[i].name;
-    if (actual.name === specieName) {
-      evolutions.push(actual);
-    } else {
-      const pokemonEvolution: PokemonResponse = await fetch(
-        `${API_URL}/pokemon/${specieName}`
-      ).then((res) => res.json());
-      evolutions.push(pokemonEvolution);
-    }
-  }
-
-  return evolutions;
 }

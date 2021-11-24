@@ -6,14 +6,15 @@ import { fetchPokemon } from "../services/api.service";
 import { normalizePokemon } from "../services/dto.service";
 import useLocale from "./useLocale";
 
-export default function usePokemonSWR() {
+/**
+ * @param pName if pName is not provided it will assume the the name of the pokemon
+ * is the same from the url params
+ */
+export default function usePokemonSWR(pName?: string) {
   const { pokemonName } = useParams();
+  const name = pName || pokemonName;
   const { locale } = useLocale();
-  const { data, error } = useSWR(
-    pokemonName ? `/pokemon/${pokemonName}` : null,
-    () => fetchPokemon(pokemonName!),
-    SWR_OPTIONS
-  );
+  const { data, error } = useSWR(`/pokemon/${name}`, () => fetchPokemon(name!), SWR_OPTIONS);
 
   return {
     pokemon: data && normalizePokemon(data, locale),
