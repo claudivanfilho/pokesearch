@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 
-import PokemonStats from "./PokemonStats";
-import PokemonEvolutionStages from "./PokemonEvolutionStages";
-import StatsLoader from "./loaders/StatsLoader";
-import PokemonAnimatedThumb from "./PokemonAnimatedThumb";
 import usePokemonSWR from "../../hooks/usePokemonSWR";
 import EvolutionStagesLoader from "./loaders/EvolutionStagesLoader";
 import PokemonThumbLoader from "./loaders/PokemonThumbLoader";
+import StatsLoader from "./loaders/StatsLoader";
+import PokemonAnimatedThumb from "./PokemonAnimatedThumb";
+import PokemonEvolutionStages from "./PokemonEvolutionStages";
+import PokemonStats from "./PokemonStats";
 
 const PokemonDetailsSidebar = () => {
   const { pokemonName } = useParams();

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/constants";
 import {
   EvolutionChainResponse,
   GenerationResponse,
@@ -5,8 +6,7 @@ import {
   PokemonResponse,
   PokemonSpecieResponse,
   Resource,
-} from '../models';
-import { API_URL } from '../config/constants';
+} from "../models";
 
 export async function fetchGenerations() {
   return fetch(`${API_URL}/generation`)

@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 
+import useGenerationSWR from "../../hooks/useGenerationSWR";
+import Loading from "../Loading";
 import GenerationDetails from "./GenerationDetails";
 import PokemonListing from "./PokemonListing";
-import Loading from "../Loading";
-import useGenerationSWR from "../../hooks/useGenerationSWR";
 
 const GenerationSection = () => {
   const { generationId } = useParams();

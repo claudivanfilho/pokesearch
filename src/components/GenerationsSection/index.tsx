@@ -1,10 +1,8 @@
-import GenerationListing from "./GenerationListing";
 import useGenerationsSWR from "../../hooks/useGenerationsSWR";
+import GenerationListing from "./GenerationListing";
 
 const GenerationsSection = () => {
   const { generations, error } = useGenerationsSWR();
-
-  console.log(generations);
 
   if (error) {
     return <div>Error on loading generations</div>;

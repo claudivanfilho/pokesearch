@@ -1,4 +1,5 @@
 import { Radar } from "react-chartjs-2";
+
 import { Pokemon } from "../../models";
 
 const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
