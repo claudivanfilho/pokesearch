@@ -1,6 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 
-import { PokemonResponse } from '../../models/index';
+import { PokemonResponse } from "../../models/index";
 
 const PokemonStageCard = ({ stage, className }: { className: string; stage: PokemonResponse }) => {
   const { generationId, pokemonName } = useParams();
@@ -10,7 +10,7 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Poke
     <Link
       to={`/generation/${generationId}/pokemon/${stage.name}`}
       className={`flex hover:scale-110 hover:bg-purple-200 hover:border-purple-400 rounded-sm shadow-xl transform border ${
-        isSelected ? 'border-purple-400 bg-purple-200 scale-110' : ''
+        isSelected ? "border-purple-400 bg-purple-200 scale-110" : ""
       } ${className}`}
     >
       <div
@@ -20,11 +20,11 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Poke
           alt={stage.name}
           src={
             stage?.sprites?.other.dream_world.front_default ||
-            stage?.sprites?.other['official-artwork'].front_default
+            stage?.sprites?.other["official-artwork"].front_default
           }
-          className="max-h-16 object-scale-down w-10 h-xl:w-14"
+          className="object-scale-down w-10 max-h-16 h-xl:w-14"
         />
-        <span className="mt-2 text-gray-600 text-xs md:text-sm">{stage.name}</span>
+        <span className="mt-2 text-xs text-gray-600 md:text-sm">{stage.name}</span>
       </div>
     </Link>
   );

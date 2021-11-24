@@ -1,16 +1,16 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 
 const Breadcrumbs = () => {
   const { generationId, pokemonName } = useParams();
 
   return (
     <nav className="container block lg:hidden">
-      <ol className="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
+      <ol className="flex py-4 pl-4 rounded list-reset bg-grey-light text-grey">
         <li className="px-2">
           {!generationId ? (
             <span className="text-gray-700">Gerações </span>
           ) : (
-            <Link to={`/`} className="flex w-full lg:w-40 text-purple-700 hover:underline">
+            <Link to={`/`} className="flex w-full text-purple-700 lg:w-40 hover:underline">
               Gerações
             </Link>
           )}
@@ -24,7 +24,7 @@ const Breadcrumbs = () => {
               ) : (
                 <Link
                   to={`/generation/${generationId}`}
-                  className="flex w-full lg:w-40 text-purple-700 hover:underline"
+                  className="flex w-full text-purple-700 lg:w-40 hover:underline"
                 >
                   Geração {generationId}
                 </Link>

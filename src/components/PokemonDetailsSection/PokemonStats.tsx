@@ -1,15 +1,15 @@
-import { Radar } from 'react-chartjs-2';
-import { Pokemon } from '../../models';
+import { Radar } from "react-chartjs-2";
+import { Pokemon } from "../../models";
 
 const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
-  const labels = pokemon.stats?.map((stat) => stat.stat.name.replace('special', 'sp')) || [];
+  const labels = pokemon.stats?.map((stat) => stat.stat.name.replace("special", "sp")) || [];
   const values = pokemon.stats?.map((stat) => stat.base_stat) || [];
   const data = {
     labels,
     datasets: [
       {
-        backgroundColor: 'rgba(128, 90, 213, 0.6)',
-        borderColor: 'rgb(128, 90, 213)',
+        backgroundColor: "rgba(128, 90, 213, 0.6)",
+        borderColor: "rgb(128, 90, 213)",
         data: values,
       },
     ],

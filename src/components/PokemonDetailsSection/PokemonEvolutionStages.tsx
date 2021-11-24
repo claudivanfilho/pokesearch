@@ -1,7 +1,7 @@
-import { ChevronRight } from '@material-ui/icons';
+import { ChevronRight } from "@material-ui/icons";
 
-import { Pokemon } from '../../models';
-import PokemonStageCard from './PokemonStageCard';
+import { Pokemon } from "../../models";
+import PokemonStageCard from "./PokemonStageCard";
 
 const PokemonEvolutionStages = ({ pokemon }: { pokemon: Pokemon }) => {
   return (

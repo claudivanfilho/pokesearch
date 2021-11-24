@@ -1,5 +1,5 @@
-import { GenerationResponse } from '../../models/index';
-import { NavLink, useParams } from 'react-router-dom';
+import { GenerationResponse } from "../../models/index";
+import { NavLink, useParams } from "react-router-dom";
 
 const GenerationListing = ({ generations }: { generations: GenerationResponse[] }) => {
   const { generationId } = useParams();
@@ -13,9 +13,9 @@ const GenerationListing = ({ generations }: { generations: GenerationResponse[] 
               key={`itme-${gen.id}`}
               to={`/generation/${gen.id}`}
               className={`p-2 py-4 mb-3 shadow-md rounded-sm text-center font-bold uppercase text-xs transform hover:scale-105 ${
-                gen.id + '' === generationId
-                  ? 'bg-purple-600 text-white'
-                  : 'hover:bg-purple-200 hover:text-purple-600'
+                gen.id + "" === generationId
+                  ? "bg-purple-600 text-white"
+                  : "hover:bg-purple-200 hover:text-purple-600"
               }`}
             >
               {gen?.nameTranslated}

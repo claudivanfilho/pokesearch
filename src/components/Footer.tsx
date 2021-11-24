@@ -1,5 +1,5 @@
 const Footer = () => (
-  <footer className="w-full text-center bg-purple-700 py-2 text-white fixed bottom-0 text-sm font-bold">
+  <footer className="fixed bottom-0 w-full py-2 text-sm font-bold text-center text-white bg-purple-700">
     Criado por Claudivan
   </footer>
 );

@@ -1,4 +1,4 @@
-import { GenerationResponse } from '../../models/index';
+import { GenerationResponse } from "../../models/index";
 
 const GenerationDetails = ({ generation }: { generation: GenerationResponse }) => {
   return (
@@ -6,7 +6,7 @@ const GenerationDetails = ({ generation }: { generation: GenerationResponse }) =
       <h2 className="text-3xl font-bold text-gray-700">
         <span>{generation.nameTranslated}</span>
       </h2>
-      <div className="flex flex-col lg:flex-row justify-between pr-2 mt-3">
+      <div className="flex flex-col justify-between pr-2 mt-3 lg:flex-row">
         <h3 className="text-xl font-bold text-gray-500">
           <span className="mr-2">Região:</span>
           <span>{generation.main_region.name}</span>
