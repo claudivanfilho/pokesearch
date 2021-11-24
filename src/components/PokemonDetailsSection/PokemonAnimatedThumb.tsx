@@ -1,5 +1,6 @@
 import { Pokemon } from '../../models';
 import PokemonAnimatedBG from './PokemonAnimatedBG';
+import useLocale from '../../hooks/useLocale';
 
 const PokemonAnimatedThumb = ({ pokemon }: { pokemon: Pokemon }) => {
   return (
@@ -7,7 +8,7 @@ const PokemonAnimatedThumb = ({ pokemon }: { pokemon: Pokemon }) => {
       className={`w-full relative flex justify-center items-center border-2 shadow-xl border-gray-400 h-28 h-xl:h-44 rounded`}
     >
       <PokemonAnimatedBG color={pokemon.color.name} className="h-full w-full" />
-      <div className="w-full h-full absolute top-0 pt-6 flex justify-center">
+      <div className="group w-full h-full absolute top-0 pt-6 flex flex-col items-center">
         <img
           alt={pokemon.name}
           className="object-scale-down max-h-full animate-bounce"
@@ -17,6 +18,9 @@ const PokemonAnimatedThumb = ({ pokemon }: { pokemon: Pokemon }) => {
           }
           width="200"
         />
+        <span className="absolute hidden group-hover:flex bg-opacity-70 bg-black p-2 text-white bottom-0 text-xs">
+          {pokemon.descriptionTranslated || ''}
+        </span>
       </div>
     </div>
   );

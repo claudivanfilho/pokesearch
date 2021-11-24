@@ -12,8 +12,11 @@ export type GenerationsResponse = {
 export type GenerationResponse = {
   id: number;
   name: string;
+  names: Array<{ language: Resource; name: string }>;
   main_region: Resource;
   pokemon_species: Resource[];
+} & {
+  nameTranslated?: string;
 };
 
 type SpriteObject = {
@@ -74,8 +77,8 @@ export type PokemonSpecieResponse = {
   evolves_from_species: null;
   flavor_text_entries: Array<{
     flavor_text: string;
-    language: Resource[];
-    version: Resource[];
+    language: Resource;
+    version: Resource;
   }>;
   form_descriptions: [];
   forms_switchable: boolean;
@@ -88,7 +91,7 @@ export type PokemonSpecieResponse = {
   is_legendary: boolean;
   is_mythical: boolean;
   name: string;
-  names: Array<{ language: Resource[]; name: string }>;
+  names: Array<{ language: Resource; name: string }>;
 };
 
 export type EvolutionChainResponse = {
@@ -112,20 +115,24 @@ export type EvolutionChainResponse = {
 
 export type Pokemon = {
   name: string;
+  names: Array<{ language: Resource; name: string }>;
   sprites: SpriteObject;
   stats: Stats[];
   height: number;
   is_default: boolean;
   flavor_text_entries: Array<{
     flavor_text: string;
-    language: Resource[];
-    version: Resource[];
+    language: Resource;
+    version: Resource;
   }>;
   color: Resource;
   base_happiness: number;
   capture_rate: number;
   genera: Array<{ genus: string; language: Resource[] }>;
   evolutions: PokemonResponse[];
+} & {
+  descriptionTranslated?: string;
+  nameTranslated?: string;
 };
 
 export type Resource = {

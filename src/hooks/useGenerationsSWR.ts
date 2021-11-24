@@ -1,17 +1,21 @@
 import useSWR from 'swr';
 
 import { API_URL, SWR_OPTIONS } from '../config/constants';
-import { Resource } from '../models';
+import { GenerationResponse } from '../models';
+import { fetchGenerations } from '../services/api.service';
+import { normalizeGeneration } from '../services/dto.service';
+import useLocale from './useLocale';
 
-export const useGenerationsSWR = () => {
-  const { data, error } = useSWR<Resource[]>(
+export default function useGenerationsSWR() {
+  const { locale } = useLocale();
+  const { data, error } = useSWR<GenerationResponse[]>(
     `${API_URL}/generation`,
-    (url: string) =>
-      fetch(url)
-        .then((res) => res.json())
-        .then((res) => res.results),
+    () => fetchGenerations(),
     SWR_OPTIONS
   );
 
-  return { generations: data, error };
-};
+  return {
+    generations: data && data.map((g) => normalizeGeneration(g, locale)),
+    error,
+  };
+}

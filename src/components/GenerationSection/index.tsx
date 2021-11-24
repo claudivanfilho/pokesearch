@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import GenerationDetails from './GenerationDetails';
 import PokemonListing from './PokemonListing';
 import Loading from '../Loading';
-import { useGenerationSWR } from '../../hooks/useGenerationSWR';
+import useGenerationSWR from '../../hooks/useGenerationSWR';
 
 const GenerationSection = () => {
   const { generationId } = useParams();

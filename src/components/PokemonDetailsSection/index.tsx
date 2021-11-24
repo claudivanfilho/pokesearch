@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import { usePokemonSWR } from "../../hooks/usePokemonSWR";
-import PokemonDetailsSidebar from "./PokemonDetailsSidebar";
+import usePokemonSWR from '../../hooks/usePokemonSWR';
+import PokemonDetailsSidebar from './PokemonDetailsSidebar';
 
 const PokemonDetailsSection = () => {
   const { pokemonName } = useParams();

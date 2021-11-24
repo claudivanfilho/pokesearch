@@ -4,8 +4,7 @@ const GenerationDetails = ({ generation }: { generation: GenerationResponse }) =
   return (
     <div className="flex flex-col">
       <h2 className="text-3xl font-bold text-gray-700">
-        <span className="mr-2">Geração</span>
-        <span>{generation.name}</span>
+        <span>{generation.nameTranslated}</span>
       </h2>
       <div className="flex flex-col lg:flex-row justify-between pr-2 mt-3">
         <h3 className="text-xl font-bold text-gray-500">
