@@ -16,7 +16,7 @@ const GenerationsSection = () => {
 
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold text-gray-700">Gerações</h3>
+      <h3 className="mb-3 text-3xl font-bold text-gray-700">Generations</h3>
       <GenerationListing generations={generations} />
     </>
   );

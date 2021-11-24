@@ -18,11 +18,11 @@ const PokemonDetailsSidebar = () => {
       <h2 className="mb-3 text-3xl font-bold text-gray-600 uppercase">{name}</h2>
       {!pokemon ? <PokemonThumbLoader /> : <PokemonAnimatedThumb pokemon={pokemon} />}
       <div className="flex flex-col items-center mt-4">
-        <h2 className="w-full mb-2 text-lg font-bold text-gray-600 uppercase">Mapa de evolução</h2>
+        <h2 className="w-full mb-2 text-lg font-bold text-gray-600 uppercase">Envolution Map</h2>
         {!pokemon ? <EvolutionStagesLoader /> : <PokemonEvolutionStages pokemon={pokemon} />}
       </div>
       <div className="flex flex-col items-center mt-4">
-        <h2 className="w-full text-lg font-bold text-gray-600 uppercase">Atributos</h2>
+        <h2 className="w-full text-lg font-bold text-gray-600 uppercase">Stats</h2>
         {!pokemon ? <StatsLoader /> : <PokemonStats pokemon={pokemon} />}
       </div>
     </div>

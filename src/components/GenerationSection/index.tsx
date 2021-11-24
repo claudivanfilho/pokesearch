@@ -10,11 +10,11 @@ const GenerationSection = () => {
   const { generation, error } = useGenerationSWR();
 
   if (error) {
-    return <div className="flex w-full h-full text-xl">Erro ao buscar geração</div>;
+    return <div className="flex w-full h-full text-xl">Error on fetching generation</div>;
   }
 
   if (!generationId) {
-    return <div className="flex w-full h-full text-xl">Nenhuma geração selecionada</div>;
+    return <div className="flex w-full h-full text-xl">No generation selected</div>;
   }
 
   if (!generation) {

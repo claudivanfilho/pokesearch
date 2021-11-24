@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useContext } from "react";
+import { LocaleContext } from "../context/LocaleContext";
 
 export default function useLocale() {
-  const [locale, setLocale] = useState('es');
-
-  return { locale, setLocale };
+  return useContext(LocaleContext);
 }

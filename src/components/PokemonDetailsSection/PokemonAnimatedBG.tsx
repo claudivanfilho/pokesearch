@@ -1,10 +1,11 @@
+import { HTMLAttributes } from "react";
+
 export default function PokemonAnimatedBG({
-  className,
   color = "default",
+  className,
 }: {
-  className: string;
   color?: string;
-}) {
+} & HTMLAttributes<HTMLDivElement>) {
   const pokemonColorsMap: { [key: string]: { stroke: string[]; bgClass: string } } = {
     default: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-white-200" },
     green: { stroke: ["#157759", "#53ab8b", "#82dbb8"], bgClass: "bg-green-200" },

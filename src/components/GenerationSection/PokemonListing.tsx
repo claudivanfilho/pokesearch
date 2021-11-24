@@ -25,7 +25,7 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
             <TextField
               onChange={(event: any) => onSearch(event.target.value)}
               id="input-with-icon-grid"
-              label="Pesquise por um pokemon"
+              label="Search for a pokemon"
               className="w-full"
             />
           </div>

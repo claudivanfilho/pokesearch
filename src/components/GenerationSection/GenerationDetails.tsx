@@ -8,7 +8,7 @@ const GenerationDetails = ({ generation }: { generation: GenerationResponse }) =
       </h2>
       <div className="flex flex-col justify-between pr-2 mt-3 lg:flex-row">
         <h3 className="text-xl font-bold text-gray-500">
-          <span className="mr-2">Região:</span>
+          <span className="mr-2">Region:</span>
           <span>{generation.main_region.name}</span>
         </h3>
         <h3 className="text-xl font-bold text-gray-500">
