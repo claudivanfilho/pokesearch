@@ -7,7 +7,7 @@ export function normalizeGeneration(
   return {
     ...generation,
     nameTranslated:
-      generation?.names.find((n) => n.language.name === locale)?.name || generation?.name,
+      generation?.names.find((n) => n.language.name === locale)?.name || generation?.names[0].name,
   };
 }
 

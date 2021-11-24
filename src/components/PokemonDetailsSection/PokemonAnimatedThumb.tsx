@@ -1,6 +1,5 @@
 import { Pokemon } from '../../models';
 import PokemonAnimatedBG from './PokemonAnimatedBG';
-import useLocale from '../../hooks/useLocale';
 
 const PokemonAnimatedThumb = ({ pokemon }: { pokemon: Pokemon }) => {
   return (
