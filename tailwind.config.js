@@ -3,5 +3,13 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
   },
   darkMode: false, // or 'media' or 'class'
-  plugins: [],
+  theme: {
+    extend: {
+      screens: {
+        'h-lg': { raw: '(min-height: 768px)' },
+        'h-xl': { raw: '(min-height: 900px)' },
+        // => @media (orientation: portrait) { ... }
+      },
+    },
+  },
 };

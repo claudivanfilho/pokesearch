@@ -1,7 +1,7 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
-import { API_URL } from "../config/constants";
-import { Resource } from "../models";
+import { API_URL, SWR_OPTIONS } from '../config/constants';
+import { Resource } from '../models';
 
 export const useGenerationsSWR = () => {
   const { data, error } = useSWR<Resource[]>(
@@ -10,7 +10,7 @@ export const useGenerationsSWR = () => {
       fetch(url)
         .then((res) => res.json())
         .then((res) => res.results),
-    { dedupingInterval: 6000000, refreshInterval: 6000000, focusThrottleInterval: 6000000 }
+    SWR_OPTIONS
   );
 
   return { generations: data, error };

@@ -1,4 +1,10 @@
-// TODO Check type x interface
+/**
+ * In this file are defined alll the types used in the application.
+ *
+ * Should I use type or interface here? The answer is WHATEVER.
+ * See the official documentation here https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
+ */
+
 export type GenerationsResponse = {
   results: Resource[];
 };

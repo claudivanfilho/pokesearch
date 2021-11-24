@@ -7,11 +7,11 @@ const PokemonMiniCard = ({ pokemon, isSelected }: { pokemon: Resource; isSelecte
   return (
     <Link
       to={`/generation/${generationId}/pokemon/${pokemon.name}`}
-      className="flex w-full lg:w-40"
+      className="flex w-full lg:w-32 xl:w-40"
     >
       <div
         key={pokemon.name}
-        className={`flex items-center h-20 lg:h-10 justify-center w-full lg:w-40 p-2 px-3 border border-purple-300 m-2 rounded-lg text-center uppercase hover:bg-purple-600 hover:text-white cursor-pointer text-xs ${
+        className={`flex items-center h-20 lg:h-10 justify-center w-full p-2 px-3 border border-purple-300 m-2 rounded-lg text-center uppercase hover:bg-purple-600 hover:text-white cursor-pointer text-xs ${
           isSelected ? 'bg-purple-600 text-white font-bold' : 'text-purple-600'
         }`}
       >

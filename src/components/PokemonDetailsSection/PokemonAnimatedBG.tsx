@@ -1,22 +1,24 @@
-import { usePokemonSWR } from "../../hooks/usePokemonSWR";
-
-const PokemonBG = ({ className }: { className: string }) => {
-  const { pokemon } = usePokemonSWR();
+export default function PokemonAnimatedBG({
+  className,
+  color = 'default',
+}: {
+  className: string;
+  color?: string;
+}) {
   const pokemonColorsMap: { [key: string]: { stroke: string[]; bgClass: string } } = {
-    default: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-white-200" },
-    green: { stroke: ["#157759", "#53ab8b", "#82dbb8"], bgClass: "bg-green-200" },
-    red: { stroke: ["#a12b2b", "#cc4343", "#f57a7a"], bgClass: "bg-red-200" },
-    yellow: { stroke: ["#cfcc1d", "#edea45", "#f7f69c"], bgClass: "bg-yellow-200" },
-    blue: { stroke: ["#255eba", "#6293e3", "#bbd3fa"], bgClass: "bg-blue-200" },
-    pink: { stroke: ["#ad2aa7", "#e36dde", "#f0b4ed"], bgClass: "bg-pink-200" },
-    black: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-white-200" },
-    gray: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-gray-200" },
-    brown: { stroke: ["#634325", "#9e6a39", "#e39c59"], bgClass: "bg-yellow-600" },
-    purple: { stroke: ["#523882", "#775aad", "#a888e3"], bgClass: "bg-purple-200" },
+    default: { stroke: ['#8fa4b3', '#bac8d1', '#ebf1f5'], bgClass: 'bg-white-200' },
+    green: { stroke: ['#157759', '#53ab8b', '#82dbb8'], bgClass: 'bg-green-200' },
+    red: { stroke: ['#a12b2b', '#cc4343', '#f57a7a'], bgClass: 'bg-red-200' },
+    yellow: { stroke: ['#cfcc1d', '#edea45', '#f7f69c'], bgClass: 'bg-yellow-200' },
+    blue: { stroke: ['#255eba', '#6293e3', '#bbd3fa'], bgClass: 'bg-blue-200' },
+    pink: { stroke: ['#ad2aa7', '#e36dde', '#f0b4ed'], bgClass: 'bg-pink-200' },
+    black: { stroke: ['#8fa4b3', '#bac8d1', '#ebf1f5'], bgClass: 'bg-white-200' },
+    gray: { stroke: ['#8fa4b3', '#bac8d1', '#ebf1f5'], bgClass: 'bg-gray-200' },
+    brown: { stroke: ['#634325', '#9e6a39', '#e39c59'], bgClass: 'bg-yellow-600' },
+    purple: { stroke: ['#523882', '#775aad', '#a888e3'], bgClass: 'bg-purple-200' },
   };
 
-  const colorName = pokemon?.color.name || "";
-  const colors = pokemonColorsMap[colorName] || pokemonColorsMap.default;
+  const colors = pokemonColorsMap[color] || pokemonColorsMap.default;
   const classColor = colors.bgClass;
   const stroke1 = colors.stroke[0];
   const stroke2 = colors.stroke[1];
@@ -342,6 +344,4 @@ const PokemonBG = ({ className }: { className: string }) => {
       </svg>
     </>
   );
-};
-
-export default PokemonBG;
+}

@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const Breadcrumbs = () => {
   const { generationId, pokemonName } = useParams();
+
   return (
     <nav className="container block lg:hidden">
       <ol className="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
@@ -45,4 +46,3 @@ const Breadcrumbs = () => {
 };
 
 export default Breadcrumbs;
-

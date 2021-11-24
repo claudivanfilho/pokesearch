@@ -1,13 +1,9 @@
 import { ChevronRight } from '@material-ui/icons';
 
-import { usePokemonSWR } from '../../hooks/usePokemonSWR';
+import { Pokemon } from '../../models';
 import PokemonStageCard from './PokemonStageCard';
 
-const PokemonEvolutionStages = () => {
-  const { pokemon } = usePokemonSWR();
-
-  // TODO make this component receive pokemon through arg and be required
-
+const PokemonEvolutionStages = ({ pokemon }: { pokemon: Pokemon }) => {
   return (
     <div className={`flex w-full lg:gap-3 justify-center items-center`}>
       {pokemon!.evolutions?.[0] && (

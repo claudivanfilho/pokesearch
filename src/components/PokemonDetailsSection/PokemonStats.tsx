@@ -1,12 +1,7 @@
 import { Radar } from 'react-chartjs-2';
-import { usePokemonSWR } from '../../hooks/usePokemonSWR';
+import { Pokemon } from '../../models';
 
-const PokemonStats = () => {
-  const { pokemon } = usePokemonSWR();
-
-  // TODO make this component receive pokemon through arg and be required
-  if (!pokemon) return null;
-
+const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
   const labels = pokemon.stats?.map((stat) => stat.stat.name.replace('special', 'sp')) || [];
   const values = pokemon.stats?.map((stat) => stat.base_stat) || [];
   const data = {
@@ -21,22 +16,9 @@ const PokemonStats = () => {
   };
 
   return (
-    <>
-      <div className="hidden lg:block mt-4">
-        <Radar
-          data={data}
-          style={{ maxHeight: 'calc(100vh - 670px)' }}
-          options={{ plugins: { legend: { display: false } } }}
-        />
-      </div>
-      <div className="h-block lg:hidden mb-10">
-        <Radar
-          className="max-h-40"
-          data={data}
-          options={{ plugins: { legend: { display: false } } }}
-        />
-      </div>
-    </>
+    <div className="mb-10 lg:mb-0">
+      <Radar className="h-32" data={data} options={{ plugins: { legend: { display: false } } }} />
+    </div>
   );
 };
 

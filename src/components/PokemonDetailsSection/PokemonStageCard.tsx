@@ -14,7 +14,7 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Poke
       } ${className}`}
     >
       <div
-        className={`flex w-full flex-col h-24 md:h-28 lg:h-32 items-center justify-between py-4 px-2 shadow cursor-pointer`}
+        className={`flex w-full flex-col h-28 h-xl:h-32 items-center justify-between py-4 px-2 shadow cursor-pointer`}
       >
         <img
           alt={stage.name}
@@ -22,7 +22,7 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Poke
             stage?.sprites?.other.dream_world.front_default ||
             stage?.sprites?.other['official-artwork'].front_default
           }
-          className="max-h-16 object-scale-down w-8 md:w-20 lg:w-14"
+          className="max-h-16 object-scale-down w-10 h-xl:w-14"
         />
         <span className="mt-2 text-gray-600 text-xs md:text-sm">{stage.name}</span>
       </div>

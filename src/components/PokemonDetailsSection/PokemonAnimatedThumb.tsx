@@ -1,34 +1,23 @@
-import { usePokemonSWR } from '../../hooks/usePokemonSWR';
-import Loading from '../Loading';
-import PokemonBG from './PokemonBG';
+import { Pokemon } from '../../models';
+import PokemonAnimatedBG from './PokemonAnimatedBG';
 
-const PokemonAnimatedThumb = ({ className }: { className: string }) => {
-  const { pokemon } = usePokemonSWR();
-
-  // TODO extract loading mode to a component loader
-  // TODO make this component receive pokemon through arg and be required
+const PokemonAnimatedThumb = ({ pokemon }: { pokemon: Pokemon }) => {
   return (
     <div
-      className={`w-full h-full relative flex justify-center items-center border-2 border-gray-400 ${className} rounded shadow`}
+      className={`w-full relative flex justify-center items-center border-2 border-gray-400 h-28 h-xl:h-44 rounded shadow`}
     >
-      <PokemonBG className="h-full w-full" />
-      {!pokemon ? (
-        <div className="w-full h-full absolute top-0 flex justify-center items-center">
-          <Loading size={100} />
-        </div>
-      ) : (
-        <div className="w-full h-full absolute top-0 pt-6 flex justify-center">
-          <img
-            alt={pokemon?.name}
-            className="object-scale-down max-h-full animate-bounce"
-            src={
-              pokemon?.sprites?.other.dream_world.front_default ||
-              pokemon?.sprites?.other['official-artwork'].front_default
-            }
-            width="200"
-          />
-        </div>
-      )}
+      <PokemonAnimatedBG color={pokemon.color.name} className="h-full w-full" />
+      <div className="w-full h-full absolute top-0 pt-6 flex justify-center">
+        <img
+          alt={pokemon.name}
+          className="object-scale-down max-h-full animate-bounce"
+          src={
+            pokemon.sprites?.other.dream_world.front_default ||
+            pokemon.sprites?.other['official-artwork'].front_default
+          }
+          width="200"
+        />
+      </div>
     </div>
   );
 };
