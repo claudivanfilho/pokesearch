@@ -9,8 +9,8 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Poke
   return (
     <Link
       to={`/generation/${generationId}/pokemon/${stage.name}`}
-      className={`flex hover:bg-purple-200 border hover:border-purple-800 rounded transform hover:scale-110 ${
-        isSelected ? 'border-purple-800 bg-purple-200 scale-110' : ''
+      className={`flex hover:scale-110 hover:bg-purple-200 hover:border-purple-400 rounded-sm shadow-xl transform border ${
+        isSelected ? 'border-purple-400 bg-purple-200 scale-110' : ''
       } ${className}`}
     >
       <div

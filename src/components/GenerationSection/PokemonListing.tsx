@@ -33,7 +33,7 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
       </div>
       <div
         style={{ height: 'calc(100vh - 350px)' }}
-        className="flex flex-col lg:grid lg:grid-cols-3 auto-rows-min gap-3 overflow-y-auto"
+        className="flex flex-col lg:grid lg:grid-cols-3 auto-rows-min gap-4 overflow-y-auto pb-4"
       >
         {getFilteredPokemons().map((pokemon) => (
           <PokemonMiniCard

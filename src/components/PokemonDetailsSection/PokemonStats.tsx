@@ -17,7 +17,11 @@ const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
 
   return (
     <div className="mb-10 lg:mb-0">
-      <Radar className="h-32" data={data} options={{ plugins: { legend: { display: false } } }} />
+      <Radar
+        className="h-28 h-xl:h-32"
+        data={data}
+        options={{ plugins: { legend: { display: false } } }}
+      />
     </div>
   );
 };

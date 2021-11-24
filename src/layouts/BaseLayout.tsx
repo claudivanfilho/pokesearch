@@ -17,7 +17,11 @@ const BaseLayout = () => {
       {generationId && <Breadcrumbs />}
       <main className="overflow-y-auto" style={{ height: 'calc(100vh - 135px)' }}>
         <div className="max-w-screen-xl block lg:grid grid-cols-12 px-5 m-auto lg:mt-8 lg:divide-x-2 lg:gap-x-5 lg:divide-solid 2xl:px-0">
-          <div className={`col-span-2 xl:col-span-2 ${generationId ? 'hidden lg:block' : 'block'}`}>
+          <div
+            className={`col-span-2 xl:col-span-2 mt-4 lg:mt-0 ${
+              generationId ? 'hidden lg:block' : 'block'
+            }`}
+          >
             <GenerationsSection />
           </div>
 
