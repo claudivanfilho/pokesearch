@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 
 import useGenerationSWR from "../../hooks/useGenerationSWR";
-import Loading from "../Loading";
 import GenerationDetails from "./GenerationDetails";
 import PokemonListing from "./PokemonListing";
 
@@ -18,11 +17,7 @@ const GenerationSection = () => {
   }
 
   if (!generation) {
-    return (
-      <div className="flex items-center justify-center w-full h-full">
-        <Loading size={100} />
-      </div>
-    );
+    return null;
   }
 
   return (

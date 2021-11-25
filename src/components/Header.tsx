@@ -19,6 +19,9 @@ const Header = () => {
           <option value="en">EN</option>
           <option value="es">ES</option>
           <option value="ko">KO</option>
+          <option value="ja">JA</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
         </select>
         <div
           className="flex items-center text-xl font-bold cursor-pointer lg:hidden"

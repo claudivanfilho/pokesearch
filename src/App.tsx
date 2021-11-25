@@ -1,5 +1,6 @@
 import { IntlProvider } from "react-intl";
 import { Route, Routes } from "react-router-dom";
+import { SWRConfig } from "swr";
 
 import useLocale from "./hooks/useLocale";
 import enMessages from "./lang/en.json";
@@ -17,15 +18,23 @@ function App() {
   const { locale } = useLocale();
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
-      <Routes>
-        <Route path="/" element={<BaseLayout />}>
-          <Route path="generation/:generationId">
-            <Route path="pokemon/:pokemonName" />
+    <SWRConfig
+      value={{
+        dedupingInterval: 6000000,
+        refreshInterval: 6000000,
+        focusThrottleInterval: 6000000,
+      }}
+    >
+      <IntlProvider locale={locale} messages={messages[locale]}>
+        <Routes>
+          <Route path="/" element={<BaseLayout />}>
+            <Route path="generation/:generationId">
+              <Route path="pokemon/:pokemonName" />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </IntlProvider>
+        </Routes>
+      </IntlProvider>
+    </SWRConfig>
   );
 }
 
