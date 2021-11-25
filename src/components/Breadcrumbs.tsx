@@ -14,31 +14,21 @@ const Breadcrumbs = () => {
         {text}
       </Link>
     ) : (
-      <span className="text-gray-700">{text} </span>
+      text
     );
 
   return (
     <nav className="container block lg:hidden">
-      <ol className="flex py-4 pl-4 rounded list-reset bg-grey-light text-grey">
-        <li className="px-2">{renderTerm(!!generationId, "/", "Gerações")}</li>
+      <ol className="flex gap-2 py-4 pl-4 text-gray-700 list-reset bg-grey-light">
+        <li>{renderTerm(!!generationId, "/", "Gerações")}</li>
+        {generationId && <li>/</li>}
         {generationId && (
-          <>
-            <li>/</li>
-            <li className="px-2">
-              {renderTerm(
-                !!pokemonName,
-                `/generation/${generationId}`,
-                generation?.nameTranslated!
-              )}
-            </li>
-          </>
+          <li>
+            {renderTerm(!!pokemonName, `/generation/${generationId}`, generation?.nameTranslated!)}
+          </li>
         )}
-        {pokemonName && (
-          <>
-            <li>/</li>
-            <li className="px-2 text-gray-700">{pokemon?.nameTranslated || pokemonName}</li>
-          </>
-        )}
+        {pokemonName && <li>/</li>}
+        {pokemonName && <li>{pokemon?.nameTranslated || pokemonName}</li>}
       </ol>
     </nav>
   );

@@ -17,27 +17,17 @@ const BaseLayout = () => {
       {generationId && <Breadcrumbs />}
       <main className="overflow-y-auto" style={{ height: "calc(100vh - 135px)" }}>
         <div className="block max-w-screen-xl grid-cols-12 px-5 m-auto lg:grid lg:mt-8 lg:divide-x-2 lg:divide-solid lg:gap-x-5 2xl:px-0">
-          <div
-            className={`col-span-2 xl:col-span-2 mt-4 lg:mt-0 ${
-              generationId ? "hidden lg:block" : "block"
-            }`}
-          >
+          <div className={`col-span-2 mt-4 lg:mt-0 ${generationId ? "hidden lg:block" : "block"}`}>
             <GenerationsSection />
           </div>
 
-          {generationId && (
-            <div
-              className={`col-span-6 lg:pl-5 ${isOnGenerationPage ? "block" : "hidden lg:block"}`}
-            >
-              <GenerationSection />
-            </div>
-          )}
+          <div className={`col-span-6 lg:pl-5 ${isOnGenerationPage ? "block" : "hidden lg:block"}`}>
+            {generationId && <GenerationSection />}
+          </div>
 
-          {pokemonName && (
-            <div className={`col-span-4 lg:pl-5 ${pokemonName ? "block" : "hidden lg:block"}`}>
-              <PokemonDetailsSection />
-            </div>
-          )}
+          <div className={`col-span-4 lg:pl-5 ${pokemonName ? "block" : "hidden lg:block"}`}>
+            {pokemonName && <PokemonDetailsSection />}
+          </div>
         </div>
       </main>
       <Footer />

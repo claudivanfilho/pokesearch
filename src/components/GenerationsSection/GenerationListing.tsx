@@ -8,17 +8,17 @@ const GenerationListing = ({ generations }: { generations: GenerationResponse[] 
   return (
     <>
       <div className="flex flex-col">
-        {generations.map((gen) => (
+        {generations.map(({ id, nameTranslated }) => (
           <NavLink
-            key={`itme-${gen.id}`}
-            to={`/generation/${gen.id}`}
-            className={`p-2 py-4 mb-3 shadow-md rounded-sm text-center font-bold uppercase text-xs transform hover:scale-105 ${
-              `${gen.id}` === generationId
+            key={`item-${id}`}
+            to={`/generation/${id}`}
+            className={`p-8 lg:py-6 mb-3 shadow-md rounded-sm text-center font-bold uppercase text-xs transform hover:scale-105 ${
+              `${id}` === generationId
                 ? "bg-purple-600 text-white"
                 : "hover:bg-purple-200 hover:text-purple-600"
             }`}
           >
-            {gen.nameTranslated}
+            {nameTranslated}
           </NavLink>
         ))}
       </div>
