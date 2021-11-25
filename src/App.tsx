@@ -26,7 +26,7 @@ function App() {
         fetcher: (url: string) => fetch(url).then((res) => res.json()),
       }}
     >
-      <IntlProvider locale={locale} messages={messages[locale]}>
+      <IntlProvider locale={locale} messages={messages[locale] || messages.en}>
         <Routes>
           <Route path="/" element={<BaseLayout />}>
             <Route path="generation/:generationId" element={<Outlet />}>

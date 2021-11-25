@@ -1,19 +1,12 @@
-import { useParams } from "react-router-dom";
-
 import useGenerationSWR from "../../hooks/useGenerationSWR";
 import GenerationDetails from "./GenerationDetails";
 import PokemonListing from "./PokemonListing";
 
 const GenerationSection = () => {
-  const { generationId } = useParams();
   const { generation, error } = useGenerationSWR();
 
   if (error) {
     return <div className="flex w-full h-full text-xl">Error on fetching generation</div>;
-  }
-
-  if (!generationId) {
-    return <div className="flex w-full h-full text-xl">No generation selected</div>;
   }
 
   if (!generation) {

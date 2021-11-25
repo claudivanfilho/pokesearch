@@ -1,9 +1,13 @@
 import { createContext, FC, useState } from "react";
 
-export const LocaleContext = createContext<{
+type LocaleContextType = {
   locale: string;
-  setLocale?: (arg: string) => void;
-}>({ locale: "en" });
+  setLocale: (arg: string) => void;
+};
+
+export const LocaleContext = createContext<LocaleContextType>({
+  locale: "en",
+} as LocaleContextType);
 
 export const LocaleProvider: FC = ({ children }) => {
   const [locale, setLocale] = useState("en");
