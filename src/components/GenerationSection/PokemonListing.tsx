@@ -9,7 +9,7 @@ import PokemonMiniCard from "./PokemonMiniCard";
 const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
   const { pokemonName } = useParams();
   const [searchText, setSearchText] = useState("");
-  const filteredPokemons = pokemons.filter((p) => p?.name.includes(searchText));
+  const filteredPokemons = pokemons.filter((p) => p.name.includes(searchText));
 
   return (
     <div className="flex flex-col">

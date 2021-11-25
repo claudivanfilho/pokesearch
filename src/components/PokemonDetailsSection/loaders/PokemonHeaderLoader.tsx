@@ -1,7 +1,7 @@
 import Loading from "../../Loading";
 import PokemonAnimatedBG from "../PokemonAnimatedBG";
 
-export default function PokemonThumbLoader() {
+export default function PokemonHeaderLoader() {
   return (
     <div
       className={`w-full relative flex justify-center items-center border-2 border-gray-400 h-28 h-xl:h-44 rounded shadow`}

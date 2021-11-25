@@ -5,9 +5,7 @@ type LocaleContextType = {
   setLocale: (arg: string) => void;
 };
 
-export const LocaleContext = createContext<LocaleContextType>({
-  locale: "en",
-} as LocaleContextType);
+export const LocaleContext = createContext<LocaleContextType>({} as LocaleContextType);
 
 export const LocaleProvider: FC = ({ children }) => {
   const [locale, setLocale] = useState("en");

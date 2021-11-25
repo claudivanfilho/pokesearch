@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 
 import usePokemonSWR from "../../hooks/usePokemonSWR";
 import EvolutionStagesLoader from "./loaders/EvolutionStagesLoader";
-import PokemonThumbLoader from "./loaders/PokemonThumbLoader";
+import PokemonHeaderLoader from "./loaders/PokemonHeaderLoader";
 import StatsLoader from "./loaders/StatsLoader";
-import PokemonAnimatedThumb from "./PokemonAnimatedThumb";
 import PokemonEvolutionStages from "./PokemonEvolutionStages";
+import PokemonHeader from "./PokemonHeader";
 import PokemonStats from "./PokemonStats";
 
 const PokemonDetailsSection = () => {
@@ -23,7 +23,7 @@ const PokemonDetailsSection = () => {
   return (
     <div className="flex flex-col">
       <h2 className="mb-3 text-3xl font-bold text-gray-600 uppercase">{name}</h2>
-      {!pokemon ? <PokemonThumbLoader /> : <PokemonAnimatedThumb pokemon={pokemon} />}
+      {!pokemon ? <PokemonHeaderLoader /> : <PokemonHeader pokemon={pokemon} />}
       <div className="flex flex-col items-center mt-4">
         <h2 className="w-full mb-2 text-lg font-bold text-gray-600 uppercase">Envolution Map</h2>
         {!pokemon ? <EvolutionStagesLoader /> : <PokemonEvolutionStages pokemon={pokemon} />}

@@ -13,7 +13,7 @@ export default function usePokemonSWR(pName?: string) {
   const { pokemonName } = useParams();
   const { locale } = useLocale();
   const name = pName || pokemonName;
-  const { data, error } = useSWR(`/pokemon/${name}`, () => fetchPokemon(name!));
+  const { data, error } = useSWR(name ? `/pokemon/${name}` : null, () => fetchPokemon(name!));
 
   return {
     pokemon: data && normalizePokemon(data, locale),

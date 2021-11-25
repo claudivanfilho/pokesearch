@@ -18,7 +18,7 @@ const GenerationListing = ({ generations }: { generations: GenerationResponse[] 
                 : "hover:bg-purple-200 hover:text-purple-600"
             }`}
           >
-            {gen?.nameTranslated}
+            {gen.nameTranslated}
           </NavLink>
         ))}
       </div>

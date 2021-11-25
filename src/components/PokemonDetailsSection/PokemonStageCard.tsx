@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import usePokemonSWR from "../../hooks/usePokemonSWR";
 import { Resource } from "../../models/index";
 import PokemonStageCardLoader from "./loaders/PokemonStageCardLoader";
+import PokemonPicture from "./PokemonPicture";
 
 const PokemonStageCard = ({ stage, className }: { className: string; stage: Resource }) => {
   const { generationId, pokemonName } = useParams();
@@ -22,16 +23,7 @@ const PokemonStageCard = ({ stage, className }: { className: string; stage: Reso
       <div
         className={`flex w-full flex-col h-28 h-xl:h-32 items-center justify-between py-4 px-2 shadow cursor-pointer`}
       >
-        {pokemon && (
-          <img
-            alt={pokemon?.name}
-            src={
-              pokemon?.sprites?.other.dream_world.front_default ||
-              pokemon?.sprites?.other["official-artwork"].front_default
-            }
-            className="object-scale-down w-10 max-h-16 h-xl:w-14"
-          />
-        )}
+        {pokemon && <PokemonPicture pokemon={pokemon} className="w-10 max-h-16 h-xl:w-14" />}
         {error && (
           <div className="flex flex-col items-center justify-center w-full h-8 gap-3 text-xs text-gray-500 rounded lg:h-14">
             <ErrorRounded className="text-red-600" fontSize="large" />

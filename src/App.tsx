@@ -2,6 +2,7 @@ import { IntlProvider } from "react-intl";
 import { Outlet, Route, Routes } from "react-router-dom";
 import { SWRConfig } from "swr";
 
+import { SWR_OPTIONS } from "./config/constants";
 import useLocale from "./hooks/useLocale";
 import enMessages from "./lang/en.json";
 import esMessages from "./lang/es.json";
@@ -20,9 +21,7 @@ function App() {
   return (
     <SWRConfig
       value={{
-        dedupingInterval: 6000000,
-        refreshInterval: 6000000,
-        focusThrottleInterval: 6000000,
+        ...SWR_OPTIONS,
         fetcher: (url: string) => fetch(url).then((res) => res.json()),
       }}
     >
