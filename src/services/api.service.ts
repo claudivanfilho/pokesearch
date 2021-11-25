@@ -1,8 +1,7 @@
-import { Cache, mutate } from "swr";
+import { mutate } from "swr";
 
 import { API_URL } from "../config/constants";
 import {
-  EvolutionChainResponse,
   GenerationResponse,
   Pokemon,
   PokemonResponse,
@@ -24,31 +23,15 @@ export async function fetchGenerations(): Promise<GenerationResponse[]> {
     });
 }
 
-export async function fetchPokemon(name: string, cache: Cache): Promise<Pokemon | null> {
+export async function fetchPokemon(name: string): Promise<Pokemon | null> {
   const pokemonResponse: PokemonResponse = await fetch(`${API_URL}/pokemon/${name}`).then((res) =>
     res.json()
   );
   const pokemonSpecie: PokemonSpecieResponse = await fetch(pokemonResponse.species.url).then(
     (res) => res.json()
   );
-  const pokemonChainCache = cache.get(pokemonSpecie.evolution_chain.url);
-  const evolutionChain: EvolutionChainResponse =
-    pokemonChainCache ||
-    (await fetch(pokemonSpecie.evolution_chain.url)
-      .then((res) => res.json())
-      .then((res) => {
-        mutate(pokemonSpecie.evolution_chain.url, res, false);
-        return res;
-      }));
-  const evolutionsResponse = evolutionChain.chain.evolves_to;
-
   return {
     ...pokemonResponse,
     ...pokemonSpecie,
-    evolutions: [
-      evolutionChain.chain.species,
-      evolutionsResponse?.[0]?.species,
-      evolutionsResponse?.[0]?.evolves_to?.[0]?.species,
-    ].filter((e) => e),
   };
 }

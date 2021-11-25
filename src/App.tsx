@@ -1,5 +1,5 @@
 import { IntlProvider } from "react-intl";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import { SWRConfig } from "swr";
 
 import useLocale from "./hooks/useLocale";
@@ -23,13 +23,14 @@ function App() {
         dedupingInterval: 6000000,
         refreshInterval: 6000000,
         focusThrottleInterval: 6000000,
+        fetcher: (url: string) => fetch(url).then((res) => res.json()),
       }}
     >
       <IntlProvider locale={locale} messages={messages[locale]}>
         <Routes>
           <Route path="/" element={<BaseLayout />}>
-            <Route path="generation/:generationId">
-              <Route path="pokemon/:pokemonName" />
+            <Route path="generation/:generationId" element={<Outlet />}>
+              <Route path="pokemon/:pokemonName" element={<Outlet />} />
             </Route>
           </Route>
         </Routes>

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 
 import { fetchPokemon } from "../services/api.service";
 import { normalizePokemon } from "../services/dto.service";
@@ -12,9 +12,8 @@ import useLocale from "./useLocale";
 export default function usePokemonSWR(pName?: string) {
   const { pokemonName } = useParams();
   const { locale } = useLocale();
-  const { cache } = useSWRConfig();
   const name = pName || pokemonName;
-  const { data, error } = useSWR(`/pokemon/${name}`, () => fetchPokemon(name!, cache));
+  const { data, error } = useSWR(`/pokemon/${name}`, () => fetchPokemon(name!));
 
   return {
     pokemon: data && normalizePokemon(data, locale),

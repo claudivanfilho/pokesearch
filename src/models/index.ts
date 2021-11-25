@@ -42,19 +42,17 @@ type SpriteObject = {
   };
 };
 
-type Stats = {
-  base_stat: number;
-  effort: number;
-  stat: Resource;
-};
-
 export type PokemonResponse = {
   id: number;
   name: string;
   order: number;
   species: Resource;
   sprites: SpriteObject;
-  stats: Stats[];
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: Resource;
+  }>;
   abilities: Array<{
     ability: Resource;
     os_hidden: boolean;
@@ -113,27 +111,11 @@ export type EvolutionChainResponse = {
   id: number;
 };
 
-export type Pokemon = {
-  name: string;
-  names: Array<{ language: Resource; name: string }>;
-  sprites: SpriteObject;
-  stats: Stats[];
-  height: number;
-  is_default: boolean;
-  flavor_text_entries: Array<{
-    flavor_text: string;
-    language: Resource;
-    version: Resource;
-  }>;
-  color: Resource;
-  base_happiness: number;
-  capture_rate: number;
-  genera: Array<{ genus: string; language: Resource[] }>;
-  evolutions: Resource[];
-} & {
-  descriptionTranslated?: string;
-  nameTranslated?: string;
-};
+export type Pokemon = PokemonResponse &
+  PokemonSpecieResponse & {
+    descriptionTranslated?: string;
+    nameTranslated?: string;
+  };
 
 export type Resource = {
   name: string;
