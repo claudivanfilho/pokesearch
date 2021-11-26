@@ -13,18 +13,14 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-between w-full">
-        <div className="w-full mt-2 mb-3">
-          <div className="flex items-center pr-2">
-            <Search className="mt-4 mr-2" />
-            <TextField
-              onChange={(event) => setSearchText(event.target.value)}
-              id="input-with-icon-grid"
-              label="Search for a pokemon"
-              className="w-full"
-            />
-          </div>
-        </div>
+      <div className="flex items-center justify-between w-full pr-2 mt-2 mb-3">
+        <TextField
+          onChange={(event) => setSearchText(event.target.value)}
+          id="input-with-icon-grid"
+          label="Search for a pokemon"
+          className="w-full"
+        />
+        <Search className="mt-4 mr-2" />
       </div>
       <div
         style={{ height: "calc(100vh - 350px)" }}
