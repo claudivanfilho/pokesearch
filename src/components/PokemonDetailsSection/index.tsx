@@ -1,12 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import usePokemonSWR from "../../hooks/usePokemonSWR";
-import EvolutionStagesLoader from "./loaders/EvolutionStagesLoader";
-import PokemonHeaderLoader from "./loaders/PokemonHeaderLoader";
-import StatsLoader from "./loaders/StatsLoader";
-import PokemonEvolutionStages from "./PokemonEvolutionStages";
-import PokemonHeader from "./PokemonHeader";
-import PokemonStats from "./PokemonStats";
+import usePokemonSWR from '../../hooks/usePokemonSWR';
+import PokemonHeaderLoader from './loaders/PokemonHeaderLoader';
+import StatsLoader from './loaders/StatsLoader';
+import PokemonEvolutionStages from './PokemonEvolutionStages';
+import PokemonHeader from './PokemonHeader';
+import PokemonStats from './PokemonStats';
 
 const PokemonDetailsSection = () => {
   const { pokemonName } = useParams();
@@ -26,7 +25,7 @@ const PokemonDetailsSection = () => {
       {!pokemon ? <PokemonHeaderLoader /> : <PokemonHeader pokemon={pokemon} />}
       <div className="flex flex-col items-center mt-4">
         <h2 className="w-full mb-2 text-lg font-bold text-gray-600 uppercase">Envolution Map</h2>
-        {!pokemon ? <EvolutionStagesLoader /> : <PokemonEvolutionStages pokemon={pokemon} />}
+        <PokemonEvolutionStages pokemon={pokemon} />
       </div>
       <div className="flex flex-col items-center mt-4">
         <h2 className="w-full text-lg font-bold text-gray-600 uppercase">Stats</h2>

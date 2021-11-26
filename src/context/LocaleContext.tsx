@@ -1,4 +1,6 @@
-import { createContext, FC, useState } from "react";
+import { createContext, FC, useState } from 'react';
+
+import { DEFAULT_LANG, LANGS } from '../config/constants';
 
 type LocaleContextType = {
   locale: string;
@@ -8,7 +10,9 @@ type LocaleContextType = {
 export const LocaleContext = createContext<LocaleContextType>({} as LocaleContextType);
 
 export const LocaleProvider: FC = ({ children }) => {
-  const [locale, setLocale] = useState("en");
+  const browserLanguage =
+    LANGS.find((l) => new RegExp(`^${l}`).test(navigator.language)) || DEFAULT_LANG;
+  const [locale, setLocale] = useState(browserLanguage);
 
   return (
     <LocaleContext.Provider

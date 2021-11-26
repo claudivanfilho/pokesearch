@@ -1,9 +1,9 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
-import { EvolutionChainResponse, Pokemon } from "../models";
+import { EvolutionChainResponse, Pokemon } from '../models';
 
-export default function usePokemonEvolutionsSWR(pokemon: Pokemon) {
-  const { data, error } = useSWR<EvolutionChainResponse>(pokemon.evolution_chain.url);
+export default function usePokemonEvolutionsSWR(pokemon?: Pokemon | null) {
+  const { data, error } = useSWR<EvolutionChainResponse>(pokemon?.evolution_chain.url || null);
 
   return {
     evolutions:

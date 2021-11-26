@@ -1,7 +1,8 @@
-import { ChevronLeft } from "@material-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { ChevronLeft } from '@material-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
-import useLocale from "../hooks/useLocale";
+import { LANGS } from '../config/constants';
+import useLocale from '../hooks/useLocale';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -19,12 +20,11 @@ const Header = () => {
           value={locale}
           onChange={(val) => setLocale(val.target.value)}
         >
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-          <option value="ko">KO</option>
-          <option value="ja">JA</option>
-          <option value="fr">FR</option>
-          <option value="de">DE</option>
+          {LANGS.map((l) => (
+            <option key={l} value={l}>
+              {l.toUpperCase()}
+            </option>
+          ))}
         </select>
         <div
           className="flex items-center text-xl font-bold cursor-pointer lg:hidden"

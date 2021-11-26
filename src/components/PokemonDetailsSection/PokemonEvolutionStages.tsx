@@ -1,11 +1,11 @@
-import { ChevronRight } from "@material-ui/icons";
+import { ChevronRight } from '@material-ui/icons';
 
-import usePokemonEvolutionsSWR from "../../hooks/usePokemonEvolutionsSWR";
-import { Pokemon } from "../../models";
-import EvolutionStagesLoader from "./loaders/EvolutionStagesLoader";
-import PokemonStageCard from "./PokemonStageCard";
+import usePokemonEvolutionsSWR from '../../hooks/usePokemonEvolutionsSWR';
+import { Pokemon } from '../../models';
+import EvolutionStagesLoader from './loaders/EvolutionStagesLoader';
+import PokemonStageCard from './PokemonStageCard';
 
-const PokemonEvolutionStages = ({ pokemon }: { pokemon: Pokemon }) => {
+const PokemonEvolutionStages = ({ pokemon }: { pokemon?: Pokemon | null }) => {
   const { evolutions } = usePokemonEvolutionsSWR(pokemon);
 
   if (!evolutions) return <EvolutionStagesLoader />;
