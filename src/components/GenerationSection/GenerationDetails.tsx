@@ -12,12 +12,12 @@ const GenerationDetails = ({ generation }: { generation: GenerationResponse }) =
       </h2>
       <div className="flex flex-col justify-between text-xl font-bold text-gray-500 lg:flex-row">
         <h3 className="flex gap-2">
-          <span>{formatMessage({ id: "regions" })}:</span>
+          <span>{formatMessage({ id: "region" })}:</span>
           <span>{generation.main_region.name}</span>
         </h3>
         <h3>
           <span>
-            {generation.pokemon_species.length} {formatMessage({ id: "pokemons" })}
+            {formatMessage({ id: "pokemons_count" }, { count: generation.pokemon_species.length })}
           </span>
         </h3>
       </div>

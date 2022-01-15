@@ -1,6 +1,6 @@
-import { createContext, FC, useState } from 'react';
+import { createContext, FC, useState } from "react";
 
-import { DEFAULT_LANG, LANGS } from '../config/constants';
+import { DEFAULT_LANG, LANGS } from "../config/constants";
 
 type LocaleContextType = {
   locale: string;

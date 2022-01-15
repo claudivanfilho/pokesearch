@@ -20,13 +20,11 @@ const Breadcrumbs = () => {
   return (
     <nav className="container block lg:hidden">
       <ol className="flex gap-2 py-4 pl-4 text-gray-700 list-reset bg-grey-light">
-        <li>{renderTerm(!!generationId, "/", "Gerações")}</li>
-        {generationId && <li>/</li>}
-        {generationId && (
-          <li>
-            {renderTerm(!!pokemonName, `/generation/${generationId}`, generation?.nameTranslated!)}
-          </li>
-        )}
+        <li>{renderTerm(true, "/", "Gerações")}</li>
+        <li>/</li>
+        <li>
+          {renderTerm(!!pokemonName, `/generation/${generationId}`, generation?.nameTranslated!)}
+        </li>
         {pokemonName && <li>/</li>}
         {pokemonName && <li>{pokemon?.nameTranslated || pokemonName}</li>}
       </ol>

@@ -7,10 +7,10 @@ import { LocaleProvider } from "./context/LocaleContext";
 import BaseLayout from "./layouts/BaseLayout";
 
 /**
- * Q: Why i am not usign the 'element' prop in the nested Routes?
+ * Q: Why am I not usign a ReactComponent in the 'element' prop in the nested Routes?
  *
  * A: Using only BaseLayout we can visualize in a better way the layout of the page
- * and beyond that as the routes are few we can use this approach.
+ * and beyond that the Breadcrumbs need to access the params throught useParams hook.
  */
 export default function App() {
   return (

@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { useState } from "react";
+import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
 import { Resource } from "../../models/index";
@@ -8,6 +9,7 @@ import PokemonMiniCard from "./PokemonMiniCard";
 
 const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
   const { pokemonName } = useParams();
+  const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState("");
   const filteredPokemons = pokemons.filter((p) => p.name.includes(searchText));
 
@@ -17,7 +19,7 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
         <TextField
           onChange={(event) => setSearchText(event.target.value)}
           id="input-with-icon-grid"
-          label="Search for a pokemon"
+          label={formatMessage({ id: "search-placeholder" })}
           className="w-full"
         />
         <Search className="mt-4 mr-2" />
