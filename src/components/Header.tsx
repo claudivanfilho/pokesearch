@@ -1,19 +1,39 @@
-import { ChevronLeft } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
+import { ChevronLeft } from "@material-ui/icons";
+import { useIntl } from "react-intl";
+import { useNavigate } from "react-router-dom";
+
+import { LANGS } from "../config/constants";
+import useLocale from "../hooks/useLocale";
 
 const Header = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
+  const { locale, setLocale } = useLocale();
+  const { formatMessage } = useIntl();
 
   return (
-    <div className="w-full bg-purple-700 py-3 text-white fixed top-0 z-10">
-      <div className="max-w-screen-xl mx-auto px-5 2xl:px-0 flex justify-between">
-        <h1 className="text-2xl font-bold">PokeSearch</h1>
+    <div className="fixed top-0 z-10 w-full py-3 text-white bg-purple-700">
+      <div className="flex justify-between max-w-screen-xl px-5 mx-auto 2xl:px-0">
+        <h1 className="text-2xl font-bold">
+          <span className="hidden md:block">PokeSearch</span>
+          <span className="block md:hidden">PSearch</span>
+        </h1>
+        <select
+          className="px-2 bg-transparent"
+          value={locale}
+          onChange={(val) => setLocale(val.target.value)}
+        >
+          {LANGS.map((l) => (
+            <option key={l} value={l}>
+              {l.toUpperCase()}
+            </option>
+          ))}
+        </select>
         <div
-          className="flex lg:hidden items-center text-xl font-bold cursor-pointer"
-          onClick={() => history.goBack()}
+          className="flex items-center text-xl font-bold cursor-pointer lg:hidden"
+          onClick={() => navigate(-1)}
         >
           <ChevronLeft fontSize="large" />
-          Voltar
+          {formatMessage({ id: "back-btn" })}
         </div>
       </div>
     </div>

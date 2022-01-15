@@ -1,68 +1,33 @@
-import { Pokemon } from '../models/index';
+import { HTMLAttributes } from "react";
 
-const PokemonBG = ({
-  pokemon,
-  className
+export default function PokemonAnimatedBG({
+  color = "default",
+  className,
 }: {
-  pokemon: Pokemon;
-  className: string;
-}) => {
-  let classColor = 'bg-white-200';
-  let stroke1 = '#8fa4b3';
-  let stroke2 = '#bac8d1';
-  let stroke3 = '#ebf1f5';
-  if (pokemon.color.name === 'green') {
-    classColor = 'bg-green-200';
-    stroke1 = '#157759';
-    stroke2 = '#53ab8b';
-    stroke3 = '#82dbb8';
-  } else if (pokemon.color.name === 'red') {
-    classColor = 'bg-red-200';
-    stroke1 = '#a12b2b';
-    stroke2 = '#cc4343';
-    stroke3 = '#f57a7a';
-  } else if (pokemon.color.name === 'yellow') {
-    classColor = 'bg-yellow-200';
-    stroke1 = '#cfcc1d';
-    stroke2 = '#edea45';
-    stroke3 = '#f7f69c';
-  } else if (pokemon.color.name === 'blue') {
-    classColor = 'bg-blue-200';
-    stroke1 = '#255eba';
-    stroke2 = '#6293e3';
-    stroke3 = '#bbd3fa';
-  } else if (pokemon.color.name === 'pink') {
-    classColor = 'bg-pink-200';
-    stroke1 = '#ad2aa7';
-    stroke2 = '#e36dde';
-    stroke3 = '#f0b4ed';
-  } else if (pokemon.color.name === 'black') {
-    classColor = 'bg-white-200';
-    stroke1 = '#8fa4b3';
-    stroke2 = '#bac8d1';
-    stroke3 = '#ebf1f5';
-  } else if (pokemon.color.name === 'gray') {
-    classColor = 'bg-gray-200';
-    stroke1 = '#8fa4b3';
-    stroke2 = '#c2c8cc';
-    stroke3 = '#e8ebed';
-  } else if (pokemon.color.name === 'brown') {
-    classColor = 'bg-yellow-600';
-    stroke1 = '#634325';
-    stroke2 = '#9e6a39';
-    stroke3 = '#e39c59';
-  } else if (pokemon.color.name === 'purple') {
-    classColor = 'bg-purple-200';
-    stroke1 = '#523882';
-    stroke2 = '#775aad';
-    stroke3 = '#a888e3';
-  }
+  color?: string;
+} & HTMLAttributes<HTMLDivElement>) {
+  const pokemonColorsMap: { [key: string]: { stroke: string[]; bgClass: string } } = {
+    default: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-white-200" },
+    green: { stroke: ["#157759", "#53ab8b", "#82dbb8"], bgClass: "bg-green-200" },
+    red: { stroke: ["#a12b2b", "#cc4343", "#f57a7a"], bgClass: "bg-red-200" },
+    yellow: { stroke: ["#cfcc1d", "#edea45", "#f7f69c"], bgClass: "bg-yellow-200" },
+    blue: { stroke: ["#255eba", "#6293e3", "#bbd3fa"], bgClass: "bg-blue-200" },
+    pink: { stroke: ["#ad2aa7", "#e36dde", "#f0b4ed"], bgClass: "bg-pink-200" },
+    black: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-white-200" },
+    gray: { stroke: ["#8fa4b3", "#bac8d1", "#ebf1f5"], bgClass: "bg-gray-200" },
+    brown: { stroke: ["#634325", "#9e6a39", "#e39c59"], bgClass: "bg-yellow-600" },
+    purple: { stroke: ["#523882", "#775aad", "#a888e3"], bgClass: "bg-purple-200" },
+  };
+
+  const colors = pokemonColorsMap[color] || pokemonColorsMap.default;
+  const classColor = colors.bgClass;
+  const stroke1 = colors.stroke[0];
+  const stroke2 = colors.stroke[1];
+  const stroke3 = colors.stroke[2];
+
   return (
     <>
-      <svg
-        className={`relative ${classColor} ${className}`}
-        preserveAspectRatio="xMidYMid"
-      >
+      <svg className={`relative ${classColor} ${className}`} preserveAspectRatio="xMidYMid">
         <defs>
           <pattern
             id="pid-0.34793511445839975"
@@ -376,16 +341,8 @@ const PokemonBG = ({
             </g>
           </pattern>
         </defs>
-        <rect
-          x="0"
-          y="0"
-          width="1084"
-          height="322"
-          fill="url(#pid-0.34793511445839975)"
-        ></rect>
+        <rect x="0" y="0" width="1084" height="322" fill="url(#pid-0.34793511445839975)"></rect>
       </svg>
     </>
   );
-};
-
-export default PokemonBG;
+}

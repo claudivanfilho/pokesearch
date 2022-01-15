@@ -1,53 +1,32 @@
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 
-const Breadcrumbs = ({
-  match: {
-    params: { id, name }
-  }
-}: RouteComponentProps<{
-  id?: string;
-  name?: string;
-}>) => {
+import useGenerationSWR from "../hooks/useGenerationSWR";
+import usePokemonSWR from "../hooks/usePokemonSWR";
+
+const Breadcrumbs = () => {
+  const { generationId, pokemonName } = useParams();
+  const { generation } = useGenerationSWR();
+  const { pokemon } = usePokemonSWR();
+
+  const renderTerm = (clickable: boolean, path: string, text: string) =>
+    clickable ? (
+      <Link to={path} className="flex w-full text-purple-700 lg:w-40 hover:underline">
+        {text}
+      </Link>
+    ) : (
+      text
+    );
+
   return (
     <nav className="container block lg:hidden">
-      <ol className="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
-        <li className="px-2">
-          {!id ? (
-            <span className="text-gray-700">Gerações </span>
-          ) : (
-            <Link
-              to={`/`}
-              className="flex w-full lg:w-40 text-purple-700 hover:underline"
-            >
-              Gerações
-            </Link>
-          )}
+      <ol className="flex gap-2 py-4 pl-4 text-gray-700 list-reset bg-grey-light">
+        <li>{renderTerm(true, "/", "Gerações")}</li>
+        <li>/</li>
+        <li>
+          {renderTerm(!!pokemonName, `/generation/${generationId}`, generation?.nameTranslated!)}
         </li>
-        {id && (
-          <>
-            <li>/</li>
-            <li className="px-2">
-              {!name ? (
-                <span className="text-gray-700">Geração {id} </span>
-              ) : (
-                <Link
-                  to={`/generation/${id}`}
-                  className="flex w-full lg:w-40 text-purple-700 hover:underline"
-                >
-                  Geração {id}
-                </Link>
-              )}
-            </li>
-          </>
-        )}
-        {name && (
-          <>
-            <li>/</li>
-            <li className="px-2">
-              <span className="text-gray-700">{name}</span>
-            </li>
-          </>
-        )}
+        {pokemonName && <li>/</li>}
+        {pokemonName && <li>{pokemon?.nameTranslated || pokemonName}</li>}
       </ol>
     </nav>
   );

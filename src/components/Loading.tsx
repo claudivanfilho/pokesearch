@@ -1,13 +1,7 @@
-const Loading = ({
-  size = 40,
-  className = ''
-}: {
-  size: number;
-  className?: string;
-}) => {
+const Loading = ({ size = 40 }: { size: number }) => {
   return (
     <svg
-      className={`animate-spin -ml-1 mr-3 text-purple-500 ${className}`}
+      className={`animate-spin -ml-1 mr-3 text-purple-500`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       width={size}

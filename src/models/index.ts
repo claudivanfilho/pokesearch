@@ -1,3 +1,10 @@
+/**
+ * In this file are defined alll the types used in the application.
+ *
+ * Should I use type or interface here? The answer is WHATEVER.
+ * See the official documentation here https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
+ */
+
 export type GenerationsResponse = {
   results: Resource[];
 };
@@ -5,8 +12,11 @@ export type GenerationsResponse = {
 export type GenerationResponse = {
   id: number;
   name: string;
+  names: Array<{ language: Resource; name: string }>;
   main_region: Resource;
   pokemon_species: Resource[];
+} & {
+  nameTranslated?: string;
 };
 
 type SpriteObject = {
@@ -23,7 +33,7 @@ type SpriteObject = {
       front_default: string;
       front_female: null;
     };
-    'official-artwork': {
+    "official-artwork": {
       front_default: string;
     };
   };
@@ -32,19 +42,17 @@ type SpriteObject = {
   };
 };
 
-type Stats = {
-  base_stat: number;
-  effort: number;
-  stat: Resource;
-};
-
 export type PokemonResponse = {
   id: number;
   name: string;
   order: number;
   species: Resource;
   sprites: SpriteObject;
-  stats: Stats[];
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: Resource;
+  }>;
   abilities: Array<{
     ability: Resource;
     os_hidden: boolean;
@@ -67,8 +75,8 @@ export type PokemonSpecieResponse = {
   evolves_from_species: null;
   flavor_text_entries: Array<{
     flavor_text: string;
-    language: Resource[];
-    version: Resource[];
+    language: Resource;
+    version: Resource;
   }>;
   form_descriptions: [];
   forms_switchable: boolean;
@@ -81,7 +89,7 @@ export type PokemonSpecieResponse = {
   is_legendary: boolean;
   is_mythical: boolean;
   name: string;
-  names: Array<{ language: Resource[]; name: string }>;
+  names: Array<{ language: Resource; name: string }>;
 };
 
 export type EvolutionChainResponse = {
@@ -103,27 +111,11 @@ export type EvolutionChainResponse = {
   id: number;
 };
 
-export type Pokemon = {
-  name: string;
-  sprites: SpriteObject;
-  stats: Stats[];
-  height: number;
-  is_default: boolean;
-  flavor_text_entries: Array<{
-    flavor_text: string;
-    language: Resource[];
-    version: Resource[];
-  }>;
-  color: Resource;
-  base_happiness: number;
-  capture_rate: number;
-  genera: Array<{ genus: string; language: Resource[] }>;
-  evolution: {
-    stage1: PokemonResponse;
-    stage2?: PokemonResponse;
-    stage3?: PokemonResponse;
+export type Pokemon = PokemonResponse &
+  PokemonSpecieResponse & {
+    descriptionTranslated?: string;
+    nameTranslated?: string;
   };
-};
 
 export type Resource = {
   name: string;
