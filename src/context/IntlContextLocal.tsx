@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { IntlProvider } from "react-intl";
 
 import useLocale from "../hooks/useLocale";
@@ -20,7 +20,7 @@ const messages: { [key: string]: Record<string, string> } = {
   ko: koMessages,
 };
 
-export const IntlProviderLocal: FC = ({ children }) => {
+export const IntlProviderLocal: FC<{ children: ReactNode }> = ({ children }) => {
   const { locale } = useLocale();
 
   return (

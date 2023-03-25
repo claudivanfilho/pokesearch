@@ -1,6 +1,8 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { SWRConfig } from "swr";
 
+import GenerationSection from "./components/GenerationSection";
+import PokemonDetailsSection from "./components/PokemonDetailsSection";
 import { SWR_OPTIONS } from "./config/constants";
 import { IntlProviderLocal } from "./context/IntlContextLocal";
 import { LocaleProvider } from "./context/LocaleContext";
@@ -19,8 +21,8 @@ export default function App() {
         <IntlProviderLocal>
           <Routes>
             <Route path="/" element={<BaseLayout />}>
-              <Route path="generation/:generationId" element={<Outlet />}>
-                <Route path="pokemon/:pokemonName" element={<Outlet />} />
+              <Route path="generation/:generationId" element={<GenerationSection />}>
+                <Route path="pokemon/:pokemonName" element={<PokemonDetailsSection />} />
               </Route>
             </Route>
           </Routes>

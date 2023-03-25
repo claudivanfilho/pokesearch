@@ -1,4 +1,5 @@
 import { useIntl } from "react-intl";
+import { Outlet, useParams } from "react-router-dom";
 
 import useGenerationSWR from "../../hooks/useGenerationSWR";
 import GenerationDetails from "./GenerationDetails";
@@ -6,6 +7,7 @@ import PokemonListing from "./PokemonListing";
 
 const GenerationSection = () => {
   const { generation, error } = useGenerationSWR();
+  const { pokemonName } = useParams();
   const { formatMessage } = useIntl();
 
   if (error) {
@@ -22,10 +24,13 @@ const GenerationSection = () => {
 
   return (
     <>
-      <GenerationDetails generation={generation} />
-      <div className="mt-3">
-        <PokemonListing pokemons={generation.pokemon_species} />
+      <div className={`col-span-6 lg:pl-5 2xl:pl-10 ${pokemonName ? "hidden lg:block" : ""}`}>
+        <GenerationDetails generation={generation} />
+        <div className="mt-3">
+          <PokemonListing pokemons={generation.pokemon_species} />
+        </div>
       </div>
+      <Outlet />
     </>
   );
 };
