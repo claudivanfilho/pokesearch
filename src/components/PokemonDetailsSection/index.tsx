@@ -30,7 +30,10 @@ const PokemonDetailsSection = () => {
   }
 
   return (
-    <div className="flex flex-col col-span-4 lg:pl-5 2xl:pl-10">
+    <div
+      className="flex flex-col col-span-4 lg:pl-5 2xl:pl-10"
+      data-testid="pokemon-details-section"
+    >
       <h2 className="mb-3 text-3xl font-bold text-gray-600 uppercase">{name}</h2>
       {!pokemon ? <PokemonHeaderLoader /> : <PokemonHeader pokemon={pokemon} />}
       <div className="flex flex-col items-center mt-4">

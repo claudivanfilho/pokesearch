@@ -3,8 +3,10 @@ import "./index.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
+import { SWRConfig } from "swr";
 
 import App from "./App";
+import { SWR_OPTIONS } from "./config/constants";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
@@ -12,9 +14,11 @@ const root = createRoot(document.getElementById("root")!);
 
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <SWRConfig value={SWR_OPTIONS}>
+      <Router>
+        <App />
+      </Router>
+    </SWRConfig>
   </React.StrictMode>
 );
 

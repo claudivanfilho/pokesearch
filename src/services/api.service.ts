@@ -1,6 +1,6 @@
 import { mutate } from "swr";
 
-import { API_URL } from "../config/constants";
+import { API_URL, GENERATION_API_URL } from "../config/constants";
 import {
   GenerationResponse,
   Pokemon,
@@ -10,14 +10,14 @@ import {
 } from "../models";
 
 export async function fetchGenerations(): Promise<GenerationResponse[]> {
-  return fetch(`${API_URL}/generation`)
+  return fetch(GENERATION_API_URL)
     .then((res) => res.json())
     .then(async ({ results }: { results: Resource[] }) =>
       Promise.all(results.map((generation) => fetch(generation.url).then((res) => res.json())))
     )
     .then((res) => {
       res.forEach((generation) => {
-        mutate(`${API_URL}/generation/${generation.id}`, generation, false);
+        mutate(`${GENERATION_API_URL}/${generation.id}`, generation, false);
       });
       return res;
     });

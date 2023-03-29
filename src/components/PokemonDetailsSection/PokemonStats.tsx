@@ -17,7 +17,7 @@ const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
   };
 
   return (
-    <div className="mb-10 lg:mb-0">
+    <div className="mb-10 lg:mb-0" data-testid="pokemon-stats">
       <Radar
         className="h-28 h-xl:h-32"
         data={data}

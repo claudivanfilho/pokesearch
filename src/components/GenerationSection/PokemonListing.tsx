@@ -14,11 +14,11 @@ const PokemonListing = ({ pokemons = [] }: { pokemons: Resource[] }) => {
   const filteredPokemons = pokemons.filter((p) => p.name.includes(searchText));
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-testid="pokemon-listing">
       <div className="flex items-center justify-between w-full pr-2 mt-2 mb-3">
         <TextField
           onChange={(event) => setSearchText(event.target.value)}
-          id="input-with-icon-grid"
+          id="search-input"
           label={formatMessage({ id: "search-placeholder" })}
           className="w-full"
         />

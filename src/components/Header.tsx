@@ -18,6 +18,7 @@ const Header = () => {
           <span className="block md:hidden">PSearch</span>
         </h1>
         <select
+          data-testid="lang-select"
           className="px-2 bg-transparent"
           value={locale}
           onChange={(val) => setLocale(val.target.value)}

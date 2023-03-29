@@ -8,7 +8,7 @@ const Breadcrumbs = () => {
   const { generation } = useGenerationSWR();
   const { pokemon } = usePokemonSWR();
 
-  const renderTerm = (clickable: boolean, path: string, text: string) =>
+  const renderTerm = (clickable: boolean, path: string, text: string = "") =>
     clickable ? (
       <Link to={path} className="flex w-full text-purple-700 lg:w-40 hover:underline">
         {text}
